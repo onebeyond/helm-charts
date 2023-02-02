@@ -54,9 +54,5 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "one-beyond-cronjob.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "one-beyond-cronjob.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+{{- default "default" .Values.serviceAccount }}
 {{- end }}

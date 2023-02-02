@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "one-beyond-cronjob.fullname" . }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  suspend: {{ .Values.suspend }}
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          {{- with .Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+        spec:
+          {{- with .Values.volumes }}
+          volumes:
+          {{- toYaml . | nindent 10 }}
+          {{- end }}
+          serviceAccountName: {{ include "one-beyond-cronjob.serviceAccountName" . }}
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              {{- with .Values.volumeMounts }}
+              volumeMounts:
+              {{- toYaml . | nindent 14 }}
+              {{- end }}
+              {{- with .Values.env }}
+              env:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.securityContext }}
+              securityContext:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}              
+              {{- with .Values.debugger }}
+              ports:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+          restartPolicy: OnFailure
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
