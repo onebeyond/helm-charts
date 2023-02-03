@@ -1,0 +1,7 @@
+
+Your cronjob {{ include "one-beyond-cronjob.fullname" . }} has been deployed
+
+    [>] This cron will do a {{ .Values.request.type }} request to {{ .Values.request.url }}
+{{- if .Values.suspend }}
+    [!] This cronjob is suspended on deploy. Remember to turn it on :)
+{{- end }}

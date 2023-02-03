@@ -1,0 +1,85 @@
+# Default values for one-beyond-cronjob.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Deploy our cronjob suspended, recommended to set it to true to test
+suspend: true
+# Cronjob schedule check https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec
+# for possible values like @daily @hourly etc.
+schedule: '0 * * * *'
+
+# ServiceAccount to be used at cluster
+serviceAccount: 'default'
+
+# Request to be sended using cURL
+request:
+  # URL to query
+  url: 'https://httpbin.org/post'
+  # Request type (GET, POST, PUT, DELETE)
+  type: POST
+  # Enable verbose (curl -vvv)
+  verbose: true
+  # Enable silent output (curl -s)
+  silent: false
+  # Header to pass to our request
+  headers:
+    - "Content-type: application/json"
+    - "Test-Header: Yes"
+  # Payload to be sent when using POST, PUT it
+  # will be transformed to JSON
+  payload:
+    test: true
+    tuple:
+      - one
+      - two
+
+# Environment variables to be sended to our container
+env:
+  # Environment from a value
+  - name: NODE_ENV
+    value: production
+  # Environment from a kubernetes secret
+  - name: JSON_CREDENTIALS
+    valueFrom:
+      secretKeyRef:
+        name: json-credentials
+        key: username
+        optional: false
+
+
+# Security context, this makes the containers run as root, non-root or remove capabilities
+# check kubernetes documentation to know more: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+    add: ["NET_ADMIN", "SYS_TIME"]
+  # This is a cronjob, usually we do not need to write to our container
+  # there are exceptions when using temporal files or you need to download
+  # something
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  allowPrivilegeEscalation: false
+
+resources:
+  {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

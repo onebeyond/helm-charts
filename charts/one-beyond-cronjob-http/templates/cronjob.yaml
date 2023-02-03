@@ -1,0 +1,58 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "one-beyond-cronjob.fullname" . }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  suspend: {{ .Values.suspend }}
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          {{- with .Values.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+        spec:
+          serviceAccountName: {{ include "one-beyond-cronjob.serviceAccountName" . }}
+          containers:
+            - name: {{ .Chart.Name }}
+              image: curlimages/curl:7.87.0
+              imagePullPolicy: IfNotPresent
+              command:
+                - curl
+                {{- if .Values.request.verbose }}
+                - -vvv
+                {{- end }}
+                {{- if .Values.request.silent }}
+                - -s
+                {{- end }}                
+                {{- range .Values.request.headers }}
+                - -H
+                - {{ . | quote }}
+                {{- end }}      
+                - -X 
+                - {{ .Values.request.type | default "GET" | quote }}
+                - {{ .Values.request.url | quote }}
+                - -d
+                - {{ .Values.request.payload | mustToJson | quote }}
+              {{- with .Values.env }}
+              env:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}
+              {{- with .Values.securityContext }}
+              securityContext:
+              {{- toYaml . | nindent 16 }}
+              {{- end }}              
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}              
+          restartPolicy: OnFailure
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
