@@ -4,6 +4,7 @@
   - [Usage](#usage)
   - [Charts](#charts)
     - [one-beyond-cronjob](#one-beyond-cronjob)
+    - [one-beyond-cronjob-http](#one-beyond-cronjob-http)
 
 ## Usage
 
@@ -34,4 +35,21 @@ To uninstall the chart:
 
 ```
     helm delete my-test-cronjob
+```
+### one-beyond-cronjob-http
+
+This cronjob will do a request using curl to trigger actions, webhooks, etc
+
+Please check [values.yaml](https://github.com/onebeyond/helm-charts/blob/main/charts/one-beyond-cronjob-http/values.yaml) for possible configuration values.
+
+To install the one-beyond-cronjob-http chart:
+
+```
+    helm install my-test-cronjob-http onebeyond/one-beyond-cronjob-http
+```
+
+To uninstall the chart:
+
+```
+    helm delete my-test-cronjob-http
 ```
