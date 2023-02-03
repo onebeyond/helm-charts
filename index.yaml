@@ -42,4 +42,15 @@ entries:
     urls:
     - https://github.com/onebeyond/helm-charts/releases/download/one-beyond-cronjob-http-0.1.0/one-beyond-cronjob-http-0.1.0.tgz
     version: 0.1.0
+  one-beyond-service:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-02-03T09:05:14.38861476Z"
+    description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
+    digest: 20b933943132e896073d63e8810e3132a97c36acf7391c52af2f42de60d5e7d4
+    name: one-beyond-service
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/one-beyond-service-0.1.0/one-beyond-service-0.1.0.tgz
+    version: 0.1.0
 generated: "2023-02-02T09:15:36.182242833Z"
