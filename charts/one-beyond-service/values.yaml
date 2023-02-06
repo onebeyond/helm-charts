@@ -24,17 +24,17 @@ serviceAccount:
   name: ""
 
 # Environment variables to be sended to our container
-env:
-  # Environment from a value
-  - name: NODE_ENV
-    value: production
-  # Environment from a kubernetes secret
-  - name: JSON_CREDENTIALS
-    valueFrom:
-      secretKeyRef:
-        name: json-credentials
-        key: username
-        optional: false
+# env:
+#   # Environment from a value
+#   - name: NODE_ENV
+#     value: production
+#   # Environment from a kubernetes secret
+#   - name: JSON_CREDENTIALS
+#     valueFrom:
+#       secretKeyRef:
+#         name: json-credentials
+#         key: username
+#         optional: false
 
 # Secrets to be passed to kubernetes, this will be replaced at CI stage (Azure DevOps, for example)
 # secrets:
