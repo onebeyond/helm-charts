@@ -40,10 +40,12 @@ spec:
           {{- with .Values.env }}
           env:
           {{- toYaml . | nindent 10 }}
-          {{- end }}          
+          {{- end }}
+          {{- with .Values.secrets }}
           envFrom:
             - secretRef:
                 name: {{ include "ob-service.fullname" . }}              
+          {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
           {{- toYaml . | nindent 12 }}
