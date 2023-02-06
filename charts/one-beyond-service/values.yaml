@@ -37,8 +37,8 @@ env:
         optional: false
 
 # Secrets to be passed to kubernetes, this will be replaced at CI stage (Azure DevOps, for example)
-secrets:
-  MY_ENV_VAR: "${base64(MyAzureSecret)}"
+# secrets:
+#   MY_ENV_VAR: "${base64(MyAzureSecret)}"
 
 podAnnotations: {}
 
