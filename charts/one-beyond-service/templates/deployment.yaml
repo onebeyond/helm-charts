@@ -41,7 +41,7 @@ spec:
           env:
           {{- toYaml . | nindent 10 }}
           {{- end }}
-          {{- with .Values.secrets }}
+          {{- if .Values.secrets }}
           envFrom:
             - secretRef:
                 name: {{ include "ob-service.fullname" . }}              
