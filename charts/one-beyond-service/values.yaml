@@ -104,11 +104,11 @@ autoscaling:
   maxReplicas: 100
   metrics:
     - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 20
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 20
 
 nodeSelector: {}
 
