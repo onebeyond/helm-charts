@@ -55,6 +55,16 @@ entries:
   one-beyond-service:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-02-09T09:07:31.799413086Z"
+    description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
+    digest: 41f0fc79bc3c0396ba48ea5afc5ff18886217ee9a725e66217b187c2cb9a97b4
+    name: one-beyond-service
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/one-beyond-service-0.1.9/one-beyond-service-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-02-07T10:18:46.629097116Z"
     description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
     digest: 7cb1759633f20e66afaebdf91dda619b506feb426fff95ff6d5be28cf161c5be
