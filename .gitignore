@@ -1,1 +1,7 @@
-.vscode/
+# IDE
+/.vscode/
+/.idea/
+
+# DEPENDENCIES
+**/charts/*.tgz
+**/Chart.lock

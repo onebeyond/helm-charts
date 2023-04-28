@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "one-beyond-dependency-track.fullname" . }}-test-connection"
+  labels:
+    {{- include "one-beyond-dependency-track.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "one-beyond-dependency-track.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
