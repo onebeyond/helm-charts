@@ -1,0 +1,30 @@
+{{- if .Values.ingressroute.enabled -}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "ob-service.fullname" . }}
+spec:
+  secretName: {{ include "ob-service.fullname" . }}-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: {{ .Values.ingressroute.dns }}
+  dnsNames:
+    - {{ .Values.ingressroute.dns }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ include "ob-service.fullname" . }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`{{ .Values.ingressroute.dns }}`)
+      kind: Rule
+      services:
+        - name: {{ include "ob-service.fullname" . }}
+          port: {{ .Values.ingressroute.port }}
+  tls:
+    secretName: {{ include "ob-service.fullname" . }}-tls
+{{- end }}
