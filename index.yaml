@@ -3,6 +3,16 @@ entries:
   ob-service:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-02-19T10:47:01.893146455Z"
+    description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
+    digest: 88e47e688ab6b317caecbdd91cff1d40d159213cdf30fecdd5c45a63da47092f
+    name: ob-service
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/ob-service-0.9.10/ob-service-0.9.10.tgz
+    version: 0.9.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-02-19T10:30:11.178213059Z"
     description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
     digest: 27febcf9c9c41b628ac8cb33dce87d0a246227666762216fd9f983224b13be00
