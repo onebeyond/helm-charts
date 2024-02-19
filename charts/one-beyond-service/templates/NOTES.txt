@@ -1,0 +1,3 @@
+{{- if .Values.secrets }}
+Please check documentation about `secrets` in your values.yaml file, they had been deprecated!
+{{- end }}
