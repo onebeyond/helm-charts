@@ -1,3 +1,7 @@
 {{- if .Values.secrets }}
 Please check documentation about `secrets` in your values.yaml file, they had been deprecated!
 {{- end }}
+
+{{- if .Values.vault.vaultSecrets }}
+Remember to create all the secrets in your vault or deployment will fail.
+{{- end }}
