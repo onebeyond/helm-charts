@@ -20,6 +20,34 @@ tolerations: []
 affinity: {}
 
 suspend: true
-schedule: '0 * * * *'
+schedule: "0 * * * *"
 
-serviceAccount: 'service-account-to-use'
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# Environment variables to be sended to our container
+# env:
+#   # Environment from a value
+#   - name: NODE_ENV
+#     value: production
+#   # Environment from a kubernetes secret
+#   - name: JSON_CREDENTIALS
+#     valueFrom:
+#       secretKeyRef:
+#         name: json-credentials
+#         key: username
+#         optional: false
+
+vault:
+  enabled: false
+  # secretStoreName: my-store-name
+  # vaultSecrets:
+  #   - secretKey: TARGET_ENVIRONMENT_VARIABLE
+  #     remoteRef:
+  #       key: VaultVariableName
