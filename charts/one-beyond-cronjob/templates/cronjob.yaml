@@ -32,6 +32,11 @@ spec:
               env:
               {{- toYaml . | nindent 16 }}
               {{- end }}
+              {{- if .Values.vault.enabled }}
+              envFrom:
+                - secretRef:
+                    name: "{{ .Release.Name }}-secret"
+              {{- end }}              
               {{- with .Values.securityContext }}
               securityContext:
               {{- toYaml . | nindent 16 }}
