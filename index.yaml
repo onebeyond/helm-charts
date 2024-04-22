@@ -44,6 +44,16 @@ entries:
   one-beyond-cronjob:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-04-22T09:27:08.665468107Z"
+    description: A Helm chart to deploy cronjobs to kubernetes
+    digest: 8c0c59456102bbda9661fa271de782141136de3c071cbc6d0de8ef71aa7b99fb
+    name: one-beyond-cronjob
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/one-beyond-cronjob-0.9.10/one-beyond-cronjob-0.9.10.tgz
+    version: 0.9.10
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-04-19T09:53:37.017211425Z"
     description: A Helm chart to deploy cronjobs to kubernetes
     digest: 5da678a93005cd9bc3d6f8d9d18af2815a7a1bf67797c14f9714dc2cf99bfcdc
