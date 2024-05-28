@@ -119,3 +119,13 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+secretVolumes:
+  enabled: true
+  volumes:
+    - name: my-secret
+      secretName: my-secret
+      secretKey: my-secret-key
+      secretPath: my-secret-key
+      mountPath: /etc/my-secret
+      readOnly: true
