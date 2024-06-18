@@ -14,6 +14,10 @@ spec:
           annotations:
             {{- toYaml . | nindent 10 }}
           {{- end }}
+          {{- with .Values.podLabels }}
+          labels:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}          
         spec:
           {{- with .Values.volumes }}
           volumes:
