@@ -13,6 +13,9 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+podAnnotations: {}
+podLabels: {} 
+
 nodeSelector: {}
 
 tolerations: []
