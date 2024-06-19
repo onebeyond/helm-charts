@@ -12,11 +12,11 @@ spec:
         metadata:
           {{- with .Values.podAnnotations }}
           annotations:
-            {{- toYaml . | nindent 10 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with .Values.podLabels }}
           labels:
-            {{- toYaml . | nindent 10 }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}          
         spec:
           {{- with .Values.volumes }}
