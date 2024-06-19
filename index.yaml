@@ -3,6 +3,16 @@ entries:
   ob-service:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-06-19T08:28:16.314282839Z"
+    description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
+    digest: aef60d64aaef1bc32cf93a054193a2b0516cdd9a5a00c9432dccb6d8f5fb46ce
+    name: ob-service
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/ob-service-0.9.14/ob-service-0.9.14.tgz
+    version: 0.9.14
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-05-28T10:08:01.280042733Z"
     description: A Helm chart to deploy service to kubernetes cluster with Traefik + CertManager
     digest: 0fa5a40a27f4176b6d300909d382de1a7e9e2dc66f7ce054597d57f91977f022
@@ -52,6 +62,16 @@ entries:
     - https://github.com/onebeyond/helm-charts/releases/download/ob-service-0.9.9/ob-service-0.9.9.tgz
     version: 0.9.9
   one-beyond-cronjob:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-06-19T08:28:16.429533035Z"
+    description: A Helm chart to deploy cronjobs to kubernetes
+    digest: 1c9f8f6d3188a0863c4055de75478537f3d7edb0196b9ffec6eec3db5fedb999
+    name: one-beyond-cronjob
+    type: application
+    urls:
+    - https://github.com/onebeyond/helm-charts/releases/download/one-beyond-cronjob-0.9.14/one-beyond-cronjob-0.9.14.tgz
+    version: 0.9.14
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-06-18T15:14:01.369228907Z"
